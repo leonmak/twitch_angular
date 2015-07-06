@@ -1,0 +1,16 @@
+User Story: As a user, I can see whether Free Code Camp is currently streaming on Twitch.tv.
+User Story: As a user, I can click the status output and be sent directly to the Free Code Camp's Twitch.tv channel.
+User Story: As a user, if Free Code Camp is streaming, I can see additional details about what they are streaming.
+
+Bonus User Story: As a user, I can search through the streams listed.
+
+Users:
+["freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","comster404","brunofin","thomasballinger","noobs2ninjas","beohoff"]
+
+jQuery's $.getJSON()
+
+Need:
+lists
+searchbar
+
+medrybw

@@ -1,0 +1,64 @@
+md-content.md-default-theme {
+  background-color: #eee;
+}
+.md-tile-left {
+  margin-right: 0px!important;
+}
+md-card {
+  background-color: #fff;
+  margin-top: 100px!important;
+}
+md-card h2:first-of-type {
+  margin-top: 0;
+}
+md-toolbar{
+  position: fixed!important;
+}
+md-toolbar .md-button.md-default-theme {
+  border-radius: 99%;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+.md-toolbar-tools-bottom {
+  font-size: small;
+}
+.md-toolbar-tools-bottom :last-child {
+  opacity: 0.8;
+}
+
+md-toolbar:not(.md-hue-1),
+.md-fab {
+  fill: #fff;
+}
+
+md-sidenav {
+  fill: #737373;
+}
+md-sidenav ng-md-icon {
+  position: relative;
+  top: 5px;
+}
+
+.user-avatar {
+  border-radius: 99%;
+}
+
+.inset{
+  padding-top: :100px!important;
+}
+/* Put your css in here */
+md-divider{
+margin-top: 20px!important;
+}
+img {
+	width: 150px;
+	height: 150px;
+	border-radius: 75px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+  background-image: url("http://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_150x150.png");
+  border: none;
+	}
