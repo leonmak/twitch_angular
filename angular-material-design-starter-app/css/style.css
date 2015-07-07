@@ -54,11 +54,45 @@ md-divider{
 margin-top: 20px!important;
 }
 img {
-	width: 150px;
-	height: 150px;
-	border-radius: 75px;
-	-webkit-border-radius: 150px;
-	-moz-border-radius: 150px;
+  float:left;
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+  background-size:100px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
   background-image: url("http://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_150x150.png");
   border: none;
+  margin-right: 15px;
 	}
+
+  a {
+  	color: #888;
+  	text-decoration: none;
+  }
+  .user{
+    padding-bottom: 10px;
+  }
+  .md-button{
+  }
+  .md-button.md-default-theme.user {
+    width: 600px;
+    border-radius: 55px;
+  }
+  .caption{
+    padding-top: 40px;
+  }
+  .bio{
+    font-size: .1rem;
+  width: 452px;
+  -o-text-overflow: ellipsis;   /* Opera */
+  text-overflow:    ellipsis;   /* IE, Safari (WebKit) */
+  text-overflow:hidden;              /* don't show excess chars */
+  white-space:nowrap;           /* force single line */
+  text-align: -webkit-left;
+  overflow: hidden;
+  margin: 0;
+      }
+  md-item-content{
+    padding: 10 10;
+  }

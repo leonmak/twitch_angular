@@ -80,17 +80,15 @@
                   <md-item ng-repeat="item in channel | filter:search">
                     <md-item-content>
 
-                        <div layout="row" layout-wrap>
-                          <md-button class="md-raised">
-                            <a href ="http://twitch.tv/{{item.name}}">
-                              <img ng-src="{{item.logo}}">
-                            </a>
-                            <p class="md-body-1">{{item.name}}.</p>
-
+                        <div class="user"layout="row" layout-wrap>
+                          <md-button class="md-raised user"href ="http://twitch.tv/{{item.name}}">
+                                <img class="3d"ng-src="{{item.logo}}">
+                              <div class="caption">{{item.name}}
+                              <p class="bio">{{item.bio}}</p>
+</div>
                           </md-button>
-
-
                       </div>
+
                     <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
                     <md-divider hide-gt-sm ng-if="!$last"></md-divider>
                   </md-item>
