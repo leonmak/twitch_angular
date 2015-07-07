@@ -1,23 +1,63 @@
 
 
   var app = angular.module('StarterApp', ['ngMaterial', 'ngMdIcons','ng']);
+  function arr_diff(a1, a2)
+  {
+    var a=[], diff=[];
+    for(var i=0;i<a1.length;i++)
+      a[a1[i]]=true;
+    for(i=0;i<a2.length;i++)
+      if(a[a2[i]]) delete a[a2[i]];
+      else a[a2[i]]=true;
+    for(var k in a)
+      diff.push(k);
+    return diff;
+  }
+
 
   app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog', '$http', function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http ){
-
-    var channellist =["medrybw" ,"freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","comster404","brunofin","thomasballinger","noobs2ninjas","beohoff"];
-    var channelstring = channellist.join(',');
+    var channellist =["monstercat" ,"medrybw" ,"freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","comster404","brunofin","thomasballinger","noobs2ninjas","beohoff"];
+    var onlineget = channellist.join(',');
     var pushc = function(data) {
       $scope.channel.push(data);
     };
     var pushf = function(data) {
        $scope.channel.push();
     };
+    var pushcc = function(data) {
+      $scope.offlinelist.push(data);
+    };
+    var pushff = function(data) {
+       $scope.offlinelist.push();
+    };
+    var url3='';
     $scope.channel =[];
-    //  var url = "https://api.twitch.tv/kraken/streams?channel="+channelstring+"&callback=JSON_CALLBACK";
-      for (var i=0; i<channellist.length;i++){
+    $scope.offline =[];
+    $scope.offlinelist =[];
+    $scope.live =[];
+    $scope.channellist =["monstercat" ,"medrybw" ,"freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","comster404","brunofin","thomasballinger","noobs2ninjas","beohoff"];
+// all from users
+    for ( i=0; i<channellist.length;i++){
       var url="https://api.twitch.tv/kraken/users/"+channellist[i]+"?callback=JSON_CALLBACK";
       $http.jsonp(url).success(pushc).error(pushf);
     }
+// online from streams
+     var urlp2 = "https://api.twitch.tv/kraken/streams?channel="+onlineget+"&callback=JSON_CALLBACK";
+     $http.jsonp(urlp2).success(function(data){
+       $scope.online = data;
+        for (var j=0; j<$scope.online.streams.length;j++){
+          $scope.live.push($scope.online.streams[j].channel.name);
+        }
+// offline from difference
+        $scope.offline = arr_diff($scope.channellist,$scope.live);
+         for (var k=0; k< $scope.offline.length;k++){
+           url3="https://api.twitch.tv/kraken/users/"+$scope.offline[k]+"?callback=JSON_CALLBACK";
+           $http.jsonp(url3).success(pushcc).error(pushff);
+         }
+     }).error(function(data){
+       $scope.online= {};
+     });
+
 
     $scope.toggleSidenav = function(menuId) {
       $mdSidenav(menuId).toggle();
@@ -158,6 +198,8 @@
     $mdThemingProvider.theme('input', 'default')
           .primaryPalette('grey');
   });
+
+  // remove square boreder on circle img
   function replaceSrc()
   {
 

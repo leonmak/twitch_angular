@@ -74,40 +74,70 @@
           <div role="tabpanel" id="tab1-content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()" layout="row" layout-align="center center">
             <md-card flex-gt-sm="90" flex-gt-md="80">
               <md-card-content>
-                <h2>Activity</h2>
+                <h2>All Channels</h2>
                 <md-list>
 
-                  <md-item ng-repeat="item in channel | filter:search">
-                    <md-item-content>
+                  <!-- <md-item ng-repeat="item in channel | filter:search">
+                    <md-item-content layout-align="center center">
 
-                        <div class="user"layout="row" layout-wrap>
-                          <md-button class="md-raised user"href ="http://twitch.tv/{{item.name}}">
+                        <div class="user"layout="row" layout-wrap >
+
+                          <md-button  class="md-raised user"href ="http://twitch.tv/{{item.name}}">
                                 <img class="3d"ng-src="{{item.logo}}">
                               <div class="caption">{{item.name}}
                               <p class="bio" flex hide-md hide-sm>{{item.bio}}</p>
-</div>
+                            </div>
                           </md-button>
                       </div>
 
                     <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
                     <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+
+                  </md-item> -->
+                  <md-item ng-repeat = "live in online.streams | filter:search">
+                    <md-item-content layout-align="center center">
+
+                        <div class="user"layout="row" layout-wrap >
+
+                          <md-button  class="md-raised user"href ="http://twitch.tv/{{live.channel.name}}">
+                                <img class="3d"ng-src="{{live.channel.logo}}">
+                              <div class="caption">{{live.channel.name}}
+                              <p class="bio" flex hide-md hide-sm>{{live.channel.status}}</p>
+                            </div>
+                          </md-button>
+                      </div>
+
                   </md-item>
 
-                  <md-divider></md-divider>
+                  <md-item ng-repeat="item in offlinelist | filter:search">
+                    <md-item-content layout-align="center center">
+                        <div class="user"layout="row" layout-wrap >
+                          <md-button  class="md-raised user"href ="http://twitch.tv/{{item.name}}">
+                                <img class="3d"ng-src="{{item.logo}}">
+                              <div class="caption">{{item.name}}
+                              <p class="bio" flex hide-md hide-sm>{{item.bio}}</p>
+                            </div>
+                          </md-button>
+                      </div>
+
+                  </md-item>
+
+                  <!-- <md-divider></md-divider>
                   <md-item layout class="inset">
                     <md-button layout layout-align="start center" flex class="md-primary">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
                       </svg> More
                     </md-button>
-                  </md-item>
+                  </md-item> -->
+
                 </md-list>
               </md-card-content>
             </md-card>
           </div>
 
           <div role="tabpanel" id="tab2-content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()" layout="row" layout-align="center center">
-            <md-card flex-gt-sm="90" flex-gt-md="80">
+            <!-- <md-card flex-gt-sm="90" flex-gt-md="80">
               <md-card-content>
                 <h2>Favorites</h2>
                 <md-list>
@@ -137,39 +167,66 @@
                   </md-item>
                 </md-list>
               </md-card-content>
+            </md-card> -->
+            <md-card flex-gt-sm="90" flex-gt-md="80">
+              <md-card-content>
+                <h2>LIVE NOW</h2>
+                <md-list>
+
+                  <md-item ng-repeat = "live in online.streams | filter:search">
+                    <md-item-content layout-align="center center">
+
+                        <div class="user"layout="row" layout-wrap >
+
+                          <md-button  class="md-raised user"href ="http://twitch.tv/{{live.channel.name}}">
+                                <img class="3d"ng-src="{{live.channel.logo}}">
+                              <div class="caption">{{live.channel.name}}
+                              <p class="bio" flex hide-md hide-sm>{{live.channel.status}}</p>
+                            </div>
+                          </md-button>
+                      </div>
+
+                    <!-- <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                    <md-divider hide-gt-sm ng-if="!$last"></md-divider> -->
+                  </md-item>
+
+                  <md-divider></md-divider>
+
+                </md-list>
+              </md-card-content>
             </md-card>
           </div>
 
           <div role="tabpanel" id="tab3-content" aria-labelledby="tab3" ng-switch-when="2" md-swipe-left="next()" md-swipe-right="previous()" layout="row" layout-align="center center">
             <md-card flex-gt-sm="90" flex-gt-md="80">
               <md-card-content>
-                <h2>Activity</h2>
+                <h2>OFFLINE</h2>
                 <md-list>
-                  <md-item ng-repeat="item in activity | filter:search">
-                    <md-item-content>
-                      <div class="md-tile-left inset" hide-sm>
-                        <user-avatar></user-avatar>
+                  <md-item ng-repeat="item in offlinelist | filter:search">
+                    <md-item-content layout-align="center center">
+
+                        <div class="user"layout="row" layout-wrap >
+
+                          <md-button  class="md-raised user"href ="http://twitch.tv/{{item.name}}">
+                                <img class="3d"ng-src="{{item.logo}}">
+                              <div class="caption">{{item.name}}
+                              <p class="bio" flex hide-md hide-sm>{{item.bio}}</p>
+                            </div>
+                          </md-button>
                       </div>
-                      <div class="md-tile-content">
-                        <h3>{{item.what}}</h3>
-                        <h4>{{item.who}}</h4>
-                        <p>
-                          {{item.notes}}
-                        </p>
-                      </div>
-                    </md-item-content>
-                    <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
-                    <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+
+                    <!-- <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                    <md-divider hide-gt-sm ng-if="!$last"></md-divider> -->
                   </md-item>
 
-                  <md-divider></md-divider>
-                  <md-item layout class="inset">
+                  <!--<md-divider></md-divider>
+                   <md-item layout class="inset">
                     <md-button layout layout-align="start center" flex class="md-primary">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
                       </svg> More
                     </md-button>
-                  </md-item>
+                  </md-item> -->
                 </md-list>
               </md-card-content>
             </md-card>
